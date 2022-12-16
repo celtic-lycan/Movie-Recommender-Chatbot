@@ -11,7 +11,7 @@
         "Good day"
       ],
       "responses": [
-        "Hey :-)",
+        "Hey there",
         "Hello, thanks for visiting",
         "Hi there, what can I do for you?",
         "Hi there, how can I help?"
@@ -27,12 +27,21 @@
       ]
     },
     {
+      "tag": "addreview",
+      "patterns": ["I wanna add review", "How to add review", "Add reviw"],
+      "responses": [
+        "Add review",
+        "",
+        "Bye! Come back again soon."
+      ]
+    },
+    {
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
       "responses": ["Happy to help!", "Any time!", "My pleasure"]
     },
     {
-      "tag": "items",
+      "tag": "todo",
       "patterns": [
         "Which items do you have?",
         "What kinds of items are there?",
@@ -84,6 +93,7 @@
     {
       "tag": "funny",
       "patterns": [
+        "Funny",
         "Tell me a joke!",
         "Tell me something funny!",
         "Do you know a joke?"

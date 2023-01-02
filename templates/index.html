@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html>
+<h1>Welcome!</h1>
 
-<head>
-    <title>Home</title>
-</head>
+<a href="{{ url_for('login') }}">Log in</a> or <a href="{{ url_for('register') }}">register</a>
 
-<body>
-    <h1>Welcome</h1>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}

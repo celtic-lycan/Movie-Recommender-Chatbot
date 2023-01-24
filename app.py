@@ -1,7 +1,8 @@
 import os
-from flask import Flask, request, redirect, url_for, render_template, flash
+from flask import Flask, request, redirect, url_for, render_template, flash, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+from chat import get_response
 
 app = Flask(__name__)
 app.secret_key = 'aiPY51_wncJiZ8kJlrDQoA'
@@ -22,6 +23,12 @@ class User(db.Model):
 def index():
     return render_template('index.html')
 
+@app.post("/predict")
+def predict():
+    text = request.get_json.get("message")
+    response = get_response(text)
+    message = {"answer": response}
+    return jsonify(message)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

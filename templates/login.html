@@ -1,0 +1,52 @@
+<style>
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+        text-align: center;
+        background-color: #242424;
+    }
+
+    h1 {
+        color: whitesmoke;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    label {
+        color: whitesmoke;
+        margin: 0.5rem auto;
+    }
+
+    form {
+        border: solid antiquewhite;
+        padding: 30px;
+        margin: 1rem auto;
+        max-width: 25%;
+    }
+
+    input {
+        border: solid whitesmoke 1.5px;
+        border-radius: 25px;
+        color: #ffde39;
+        background-color: #242424;
+    }
+</style>
+
+<h1>Log in</h1>
+
+<form method="post" action="{{ url_for('login') }}">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}

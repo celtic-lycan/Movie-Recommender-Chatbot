@@ -23,12 +23,14 @@ class User(db.Model):
 def index():
     return render_template('index.html')
 
+
 @app.post("/predict")
 def predict():
     text = request.get_json.get("message")
     response = get_response(text)
     message = {"answer": response}
     return jsonify(message)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -71,6 +73,7 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html')
+
 
 @app.before_first_request
 def create_tables():

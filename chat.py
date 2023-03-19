@@ -24,12 +24,14 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-bot_name = "Movie Recommender System"
+bot_name = "Mr.Movie"
 print("Let's me help find you a movie! (type 'quit' to exit)")
+while True:
+    sentence = input("You: ")
+    if sentence == "quit":
+        break
 
-
-def get_response(msg):
-    sentence = tokenize(msg)
+    sentence = tokenize(sentence)
     X = bag_of_words(sentence, all_words)
     X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
@@ -44,17 +46,8 @@ def get_response(msg):
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                return random.choice(intent['responses'])
-
-    return "I do not understand..."
-
-
-if __name__ == "__main__":
-    while True:
-        # sentence = "do you use credit cards?"
-        sentence = input("You: ")
-        if sentence == "quit":
-            break
-
-        resp = get_response(sentence)
-        print(resp)
+                if tag=="movie":
+                    a=input("Enter the last movie you watched:\n")
+                print(f"{bot_name}: {random.choice(intent['responses'])}")
+    else:
+        print(f"{bot_name}: I do not understand...")

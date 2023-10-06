@@ -24,7 +24,7 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-bot_name = "Nattu Kaka"
+bot_name = "Mr.Movie"
 print("Let's me help find you a movie! (type 'quit' to exit)")
 while True:
     sentence = input("You: ")
@@ -46,6 +46,8 @@ while True:
     if prob.item() > 0.75:
         for intent in intents['intents']:
             if tag == intent["tag"]:
+                if tag=="movie":
+                    a=input("Enter the last movie you watched:\n")
                 print(f"{bot_name}: {random.choice(intent['responses'])}")
     else:
         print(f"{bot_name}: I do not understand...")
